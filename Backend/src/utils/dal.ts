@@ -7,9 +7,11 @@ class Dal {
     // Configuration for our database:
     private readonly options: PoolOptions = {
         host: appConfig.mysqlHost,
+        port: appConfig.mysqlPort,
         user: appConfig.mysqlUser,
         password: appConfig.mysqlPassword,
-        database: appConfig.mysqlDatabase
+        database: appConfig.mysqlDatabase,
+        ssl: appConfig.mysqlSsl ? { rejectUnauthorized: false } : undefined
     };
 
     // Connection object:

@@ -9,7 +9,7 @@ class AppConfig {
     public readonly isDevelopment = this.environment === "development";
     public readonly isProduction = this.environment === "production";
 
-    public readonly port = 4000;
+    public readonly port = Number(process.env.PORT) || 4000;
     public readonly mysqlHost = process.env.MYSQL_HOST!;
     public readonly mysqlUser = process.env.MYSQL_USER!;
     public readonly mysqlPassword = process.env.MYSQL_PASSWORD!;
@@ -17,7 +17,8 @@ class AppConfig {
     public readonly jwtSecret = process.env.JWT_SECRET!;
     public readonly hashSalt = process.env.HASH_SALT!;
     public readonly recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY!;
-
+    public readonly mysqlPort = Number(process.env.MYSQL_PORT) || 3306;
+    public readonly mysqlSsl = process.env.MYSQL_SSL === "true";
 }
 
 export const appConfig = new AppConfig();
